@@ -170,18 +170,26 @@ public class SagaPedidoCommandService extends Thread {
         return true;
 
     }
+
+    private List<Function<Pedido, Boolean>> cargarPasos() {
+
+        Function<Pedido, Boolean> fStep1 = p -> step1(p);
+        Function<Pedido, Boolean> fStep2 = p -> step2(p);
+        Function<Pedido, Boolean> fStep3 = p -> step3(p);
+        Function<Pedido, Boolean> fStep4 = p -> step4(p);
+        
+        List<Function<Pedido, Boolean>> listaPasos = Arrays.asList(fStep1, fStep2, fStep3, fStep4);
+
+        return listaPasos;
+    }
     
     private void execute(Optional<Pedido> pedido) {
 
         if (pedido.isPresent()) {
-
-            Function<Pedido, Boolean> fStep1 = p -> step1(p);
-            Function<Pedido, Boolean> fStep2 = p -> step2(p);
-            Function<Pedido, Boolean> fStep3 = p -> step3(p);
-            Function<Pedido, Boolean> fStep4 = p -> step4(p);
             
             Boolean procesoCorrecto = true;
-            List<Function<Pedido, Boolean>> listaPasos = Arrays.asList(fStep1, fStep2, fStep3, fStep4);
+            List<Function<Pedido, Boolean>> listaPasos = this.cargarPasos();
+
             for (Function<Pedido,Boolean> step : listaPasos) {
 
                 if (!step.apply(pedido.get())) {
@@ -215,8 +223,12 @@ public class SagaPedidoCommandService extends Thread {
 
         if (this.pedidoId != null) {
 
-            Optional<Pedido> pedido = this.pedidoRepository.findById(pedidoId);
-            this.execute(pedido);
+            try {
+                Optional<Pedido> pedido = this.pedidoRepository.findById(pedidoId);
+                this.execute(pedido);
+            } catch (Exception e) {
+                logger.error("Error al ejecutar la transaccion de pedido " + this.pedidoId.getId());
+            }
             
         }
         
