@@ -2,6 +2,7 @@ package es.codeurjc.daw.microserviciopedido.application;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import es.codeurjc.daw.common.PedidoBase;
@@ -11,12 +12,16 @@ import es.codeurjc.daw.microserviciopedido.domain.Pedido;
 import es.codeurjc.daw.microserviciopedido.domain.PedidoEstado;
 import es.codeurjc.daw.microserviciopedido.domain.ProductoId;
 import es.codeurjc.daw.microserviciopedido.infrastructure.PedidoRepository;
+import es.codeurjc.daw.microserviciopedido.infrastructure.WebClientMonolito;
 
 @Service
 public class PedidoCommandService {
 
     @Autowired
     private PedidoRepository pedidoRepository;
+
+    @Autowired
+    private WebClientMonolito webClient;
 
     @Autowired
     private ModelMapper modelMapperCommand;
@@ -35,17 +40,10 @@ public class PedidoCommandService {
 
         pedido = this.pedidoRepository.save(pedido);
 
-        // Lanzamos el proceso del pedido en modo asincrono
-        /*
-        SagaPedidoCommandService transaccionAsync = new SagaPedidoCommandService();
-        transaccionAsync.pedidoId = pedido.getId();
-        transaccionAsync.clienteRepository = this.clienteRepository;
-        transaccionAsync.pedidoRepository = this.pedidoRepository;
-        transaccionAsync.productoRepository = this.productoRepository;
-        transaccionAsync.clienteCommandService = clienteCommandService;
-        transaccionAsync.productoCommandService = productoCommandService;
+        // Lanzamos la saga del proceso del pedido en modo asincrono
+        SagaPedidoCommandService transaccionAsync = 
+            new SagaPedidoCommandService(pedido.getId(), this.pedidoRepository, webClient);
         transaccionAsync.start();
-        */
 
 		return convertEntityToDto(pedido);
     }
