@@ -11,16 +11,21 @@ public class Pedido {
     @EmbeddedId  PedidoId id;
     private ClienteId clienteId;
     private ProductoId productoId;
+    private PedidoEstado estado;
+    private PedidoRechazo motivoRechazo;
     private int cantidad;
 
     public Pedido() {
         this.id = new PedidoId();
     }
 
-    public Pedido(PedidoId id, ClienteId clienteId, ProductoId productoId, int cantidad) {
+    public Pedido(PedidoId id, ClienteId clienteId, ProductoId productoId, PedidoEstado estado,
+            PedidoRechazo motivoRechazo, int cantidad) {
         this.id = id;
         this.clienteId = clienteId;
         this.productoId = productoId;
+        this.estado = estado;
+        this.motivoRechazo = motivoRechazo;
         this.cantidad = cantidad;
     }
 
@@ -54,5 +59,21 @@ public class Pedido {
 
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
+    }
+
+    public PedidoEstado getEstado() {
+        return estado;
+    }
+
+    public void setEstado(PedidoEstado estado) {
+        this.estado = estado;
+    }
+
+    public PedidoRechazo getMotivoRechazo() {
+        return motivoRechazo;
+    }
+
+    public void setMotivoRechazo(PedidoRechazo motivoRechazo) {
+        this.motivoRechazo = motivoRechazo;
     }
 }

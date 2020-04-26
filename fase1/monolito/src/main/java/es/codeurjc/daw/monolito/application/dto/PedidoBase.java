@@ -5,6 +5,8 @@ public class PedidoBase {
     private String pedidoId;
     private String clienteId;
     private String productoId;
+    private String estado;
+    private String motivoRechazo;
     private int cantidad;
 
     public PedidoBase() {
@@ -42,9 +44,25 @@ public class PedidoBase {
         this.productoId = productoId;
     }
 
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public String getMotivoRechazo() {
+        return motivoRechazo;
+    }
+
+    public void setMotivoRechazo(String motivoRechazo) {
+        this.motivoRechazo = motivoRechazo;
+    }
+
     @Override
     public String toString() {
-        return "PedidoBase [cantidad=" + cantidad + ", clienteId=" + clienteId + ", pedidoId=" + pedidoId
-                + ", productoId=" + productoId + "]";
+        return "PedidoBase [cantidad=" + cantidad + ", clienteId=" + clienteId + ", estado=" + estado
+                + ", motivoRechazo=" + motivoRechazo + ", pedidoId=" + pedidoId + ", productoId=" + productoId + "]";
     }
 }

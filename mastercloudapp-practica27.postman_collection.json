@@ -278,6 +278,83 @@
 				}
 			],
 			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Pedido",
+			"item": [
+				{
+					"name": "Alta",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"clienteId\" : \"c61f7480-0443-4d63-abbb-72c1e090a327\",\n\t\"productoId\": \"30e68e61-6c88-4300-8b5c-f9462785add1\",\n\t\"cantidad\": 1\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/pedido",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"pedido"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Leer pedidos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/pedido",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"pedido"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Leer por identificador",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/pedido/03b8b9ff-70f6-4755-9559-72942ebe0c7b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"pedido",
+								"03b8b9ff-70f6-4755-9559-72942ebe0c7b"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
 		}
 	],
 	"protocolProfileBehavior": {}

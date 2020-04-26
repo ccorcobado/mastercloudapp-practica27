@@ -18,6 +18,9 @@ public class ClienteCommandService {
 
 	@Autowired
 	private ClienteRepository clienteRepository;
+
+	@Autowired
+	private NotificadorService notificadorService;
 	
     @Autowired
     private ModelMapper modelMapperCommand;
@@ -50,7 +53,6 @@ public class ClienteCommandService {
 		switch (input.getTransaccion()) {
 
 			case INGRESO:
-				// TODO: Añadir notificacion
 				optionalCliente.get().sumarCredito(input.getCredito());
 				break;
 
@@ -63,6 +65,8 @@ public class ClienteCommandService {
 		}
 
 		Cliente cliente = this.clienteRepository.save(optionalCliente.get());
+		
+		this.notificadorService.notificar(input);
 
 		return convertEntityToDto(cliente);
 	}
