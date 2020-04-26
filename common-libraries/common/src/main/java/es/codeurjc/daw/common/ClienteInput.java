@@ -11,6 +11,12 @@ public class ClienteInput {
     public ClienteInput() {
     }
 
+    public ClienteInput(String nombre, String apellido, BigDecimal credito) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.credito = credito;
+    }
+
     public String getNombre() {
         return nombre;
     }

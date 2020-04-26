@@ -11,6 +11,12 @@ public class ProductoInput {
     public ProductoInput() {
     }
 
+    public ProductoInput(String nombre, BigDecimal precio, int stock) {
+        this.nombre = nombre;
+        this.precio = precio;
+        this.stock = stock;
+    }
+
     public String getNombre() {
         return nombre;
     }

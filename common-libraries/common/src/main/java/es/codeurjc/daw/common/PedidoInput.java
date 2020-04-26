@@ -9,6 +9,12 @@ public class PedidoInput {
     public PedidoInput() {
     }
 
+    public PedidoInput(String clienteId, String productoId, int cantidad) {
+        this.clienteId = clienteId;
+        this.productoId = productoId;
+        this.cantidad = cantidad;
+    }
+
     public String getClienteId() {
         return clienteId;
     }
