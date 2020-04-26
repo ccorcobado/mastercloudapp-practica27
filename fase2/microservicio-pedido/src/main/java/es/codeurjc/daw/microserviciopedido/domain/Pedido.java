@@ -1,4 +1,4 @@
-package es.codeurjc.daw.monolito.domain;
+package es.codeurjc.daw.microserviciopedido.domain;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;

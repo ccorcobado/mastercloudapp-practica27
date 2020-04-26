@@ -1,4 +1,4 @@
-package es.codeurjc.daw.monolito.application;
+package es.codeurjc.daw.microserviciopedido.application;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,9 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import es.codeurjc.daw.common.PedidoBase;
-import es.codeurjc.daw.monolito.domain.Pedido;
-import es.codeurjc.daw.monolito.domain.PedidoId;
-import es.codeurjc.daw.monolito.infrastructure.PedidoRepository;
+import es.codeurjc.daw.microserviciopedido.domain.Pedido;
+import es.codeurjc.daw.microserviciopedido.domain.PedidoId;
+import es.codeurjc.daw.microserviciopedido.infrastructure.PedidoRepository;
 
 @Service
 public class PedidoQueryService {

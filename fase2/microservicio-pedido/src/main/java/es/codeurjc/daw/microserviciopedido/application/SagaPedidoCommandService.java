@@ -1,4 +1,4 @@
-package es.codeurjc.daw.monolito.application;
+package es.codeurjc.daw.microserviciopedido.application;
 
 import java.math.BigDecimal;
 import java.util.Optional;
@@ -6,25 +6,25 @@ import java.util.Optional;
 import es.codeurjc.daw.common.ClienteTransaccion;
 import es.codeurjc.daw.common.ProductoTransaccion;
 import es.codeurjc.daw.common.TipoTransaccion;
-import es.codeurjc.daw.monolito.domain.*;
-import es.codeurjc.daw.monolito.infrastructure.ClienteRepository;
-import es.codeurjc.daw.monolito.infrastructure.PedidoRepository;
-import es.codeurjc.daw.monolito.infrastructure.ProductoRepository;
+import es.codeurjc.daw.microserviciopedido.domain.*;
+// import es.codeurjc.daw.microserviciopedido.infrastructure.ClienteRepository;
+import es.codeurjc.daw.microserviciopedido.infrastructure.PedidoRepository;
+// import es.codeurjc.daw.microserviciopedido.infrastructure.ProductoRepository;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
-public class TransaccionPedidoCommandService extends Thread {
+public class SagaPedidoCommandService extends Thread {
 
-    private static final Logger logger = LogManager.getLogger(TransaccionPedidoCommandService.class);
+    private static final Logger logger = LogManager.getLogger(SagaPedidoCommandService.class);
 
     public PedidoId pedidoId;
-    public ClienteRepository clienteRepository;
-    public ClienteCommandService clienteCommandService;
-    public ProductoRepository productoRepository;
-    public ProductoCommandService productoCommandService;
+    // public ClienteRepository clienteRepository;
+    // public ClienteCommandService clienteCommandService;
+    // public ProductoRepository productoRepository;
+    // public ProductoCommandService productoCommandService;
     public PedidoRepository pedidoRepository;    
-
+/*
     private boolean step1(Pedido pedido) {
 
         // PASO 1 - Comprobar existencia de cliente
@@ -158,11 +158,11 @@ public class TransaccionPedidoCommandService extends Thread {
         return true;
 
     }
-
+*/
     private void execute(Optional<Pedido> pedido) {
 
         if (pedido.isPresent()) {
-
+/*
             if (step1(pedido.get())) {
 
                 if (step2(pedido.get())) {
@@ -170,17 +170,17 @@ public class TransaccionPedidoCommandService extends Thread {
                     if (step3(pedido.get())) {
                         
                         if (step4(pedido.get())) {
-                        
+*/                        
                             // si todo fue bien, aprobamos el pedido
                             pedido.get().setEstado(PedidoEstado.APROBADO);    
                             this.pedidoRepository.save(pedido.get());
-
+/*
                         }
                     }
                 }
             }
+*/
         }
-
     }
 
     public void run()

@@ -1,4 +1,4 @@
-package es.codeurjc.daw.monolito.domain;
+package es.codeurjc.daw.microserviciopedido.domain;
 
 import java.io.Serializable;
 import java.util.UUID;
@@ -7,18 +7,18 @@ import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 @Embeddable
-public class PedidoId implements Serializable {
-
+public class ClienteId implements Serializable {
+    
     private static final long serialVersionUID = 1L;
 
-    @Column(name = "pedidoId")
+    @Column(name = "clienteId")
     private String id;
 
-    public PedidoId() { 
+    public ClienteId() { 
         this.id = UUID.randomUUID().toString();
     }
 
-    public PedidoId(String id) {
+    public ClienteId(String id) {
         this.id = id;
     }
 
@@ -42,7 +42,7 @@ public class PedidoId implements Serializable {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        PedidoId other = (PedidoId) obj;
+        ClienteId other = (ClienteId) obj;
         if (id == null) {
             if (other.id != null)
                 return false;

@@ -1,4 +1,4 @@
-package es.codeurjc.daw.monolito.ui;
+package es.codeurjc.daw.microserviciopedido.ui;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import es.codeurjc.daw.monolito.application.PedidoCommandService;
-import es.codeurjc.daw.monolito.application.PedidoQueryService;
+import es.codeurjc.daw.microserviciopedido.application.PedidoCommandService;
+import es.codeurjc.daw.microserviciopedido.application.PedidoQueryService;
 import es.codeurjc.daw.common.PedidoBase;
 import es.codeurjc.daw.common.PedidoInput;
 
