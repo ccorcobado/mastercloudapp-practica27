@@ -1,4 +1,4 @@
-package es.codeurjc.daw.monolito.application.dto;
+package es.codeurjc.daw.common;
 
 public class PedidoInput {
 

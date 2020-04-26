@@ -3,9 +3,9 @@ package es.codeurjc.daw.monolito.application;
 import java.math.BigDecimal;
 import java.util.Optional;
 
-import es.codeurjc.daw.monolito.application.dto.ClienteTransaccion;
-import es.codeurjc.daw.monolito.application.dto.ProductoTransaccion;
-import es.codeurjc.daw.monolito.application.dto.TipoTransaccion;
+import es.codeurjc.daw.common.ClienteTransaccion;
+import es.codeurjc.daw.common.ProductoTransaccion;
+import es.codeurjc.daw.common.TipoTransaccion;
 import es.codeurjc.daw.monolito.domain.*;
 import es.codeurjc.daw.monolito.infrastructure.ClienteRepository;
 import es.codeurjc.daw.monolito.infrastructure.PedidoRepository;
@@ -185,11 +185,11 @@ public class TransaccionPedidoCommandService extends Thread {
 
     public void run()
     {
-        logger.debug("Iniciamos saga de pedido");
+        logger.debug("Iniciamos Transaccion de pedido");
 
         try {
             // Le damos suspense a la transaccion :P
-            Thread.sleep(5000);
+            Thread.sleep(7000);
         }
         catch (InterruptedException iex) { }
 

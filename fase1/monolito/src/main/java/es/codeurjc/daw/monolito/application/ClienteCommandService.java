@@ -6,9 +6,9 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import es.codeurjc.daw.monolito.application.dto.ClienteInput;
-import es.codeurjc.daw.monolito.application.dto.ClienteTransaccion;
-import es.codeurjc.daw.monolito.application.dto.ClienteBase;
+import es.codeurjc.daw.common.ClienteInput;
+import es.codeurjc.daw.common.ClienteTransaccion;
+import es.codeurjc.daw.common.ClienteBase;
 import es.codeurjc.daw.monolito.domain.Cliente;
 import es.codeurjc.daw.monolito.domain.ClienteId;
 import es.codeurjc.daw.monolito.infrastructure.ClienteRepository;

@@ -8,7 +8,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import es.codeurjc.daw.monolito.application.dto.PedidoBase;
+import es.codeurjc.daw.common.PedidoBase;
 import es.codeurjc.daw.monolito.domain.Pedido;
 import es.codeurjc.daw.monolito.domain.PedidoId;
 import es.codeurjc.daw.monolito.infrastructure.PedidoRepository;

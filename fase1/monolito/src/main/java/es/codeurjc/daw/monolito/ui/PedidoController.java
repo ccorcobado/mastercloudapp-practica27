@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import es.codeurjc.daw.monolito.application.PedidoCommandService;
 import es.codeurjc.daw.monolito.application.PedidoQueryService;
-import es.codeurjc.daw.monolito.application.dto.PedidoBase;
-import es.codeurjc.daw.monolito.application.dto.PedidoInput;
+import es.codeurjc.daw.common.PedidoBase;
+import es.codeurjc.daw.common.PedidoInput;
 
 import java.util.List;
 

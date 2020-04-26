@@ -8,7 +8,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import es.codeurjc.daw.monolito.application.dto.ProductoCompletoOutput;
+import es.codeurjc.daw.common.ProductoCompletoOutput;
 import es.codeurjc.daw.monolito.domain.Producto;
 import es.codeurjc.daw.monolito.domain.ProductoId;
 import es.codeurjc.daw.monolito.infrastructure.ProductoRepository;

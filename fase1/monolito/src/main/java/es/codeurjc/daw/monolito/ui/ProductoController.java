@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import es.codeurjc.daw.monolito.application.ProductoCommandService;
 import es.codeurjc.daw.monolito.application.ProductoQueryService;
-import es.codeurjc.daw.monolito.application.dto.ProductoBase;
-import es.codeurjc.daw.monolito.application.dto.ProductoCompletoOutput;
-import es.codeurjc.daw.monolito.application.dto.ProductoInput;
-import es.codeurjc.daw.monolito.application.dto.ProductoTransaccion;
+import es.codeurjc.daw.common.ProductoBase;
+import es.codeurjc.daw.common.ProductoCompletoOutput;
+import es.codeurjc.daw.common.ProductoInput;
+import es.codeurjc.daw.common.ProductoTransaccion;
 
 import java.util.List;
 

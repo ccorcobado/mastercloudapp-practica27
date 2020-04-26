@@ -6,9 +6,9 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import es.codeurjc.daw.monolito.application.dto.ProductoBase;
-import es.codeurjc.daw.monolito.application.dto.ProductoInput;
-import es.codeurjc.daw.monolito.application.dto.ProductoTransaccion;
+import es.codeurjc.daw.common.ProductoBase;
+import es.codeurjc.daw.common.ProductoInput;
+import es.codeurjc.daw.common.ProductoTransaccion;
 import es.codeurjc.daw.monolito.domain.Producto;
 import es.codeurjc.daw.monolito.domain.ProductoId;
 import es.codeurjc.daw.monolito.infrastructure.ProductoRepository;

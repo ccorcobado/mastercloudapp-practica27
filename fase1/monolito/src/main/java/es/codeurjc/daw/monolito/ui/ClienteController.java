@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import es.codeurjc.daw.monolito.application.ClienteCommandService;
 import es.codeurjc.daw.monolito.application.ClienteQueryService;
-import es.codeurjc.daw.monolito.application.dto.ClienteCompletoOutput;
-import es.codeurjc.daw.monolito.application.dto.ClienteInput;
-import es.codeurjc.daw.monolito.application.dto.ClienteTransaccion;
-import es.codeurjc.daw.monolito.application.dto.ClienteBase;
+import es.codeurjc.daw.common.ClienteCompletoOutput;
+import es.codeurjc.daw.common.ClienteInput;
+import es.codeurjc.daw.common.ClienteTransaccion;
+import es.codeurjc.daw.common.ClienteBase;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;

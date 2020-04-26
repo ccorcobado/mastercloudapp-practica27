@@ -2,7 +2,7 @@ package es.codeurjc.daw.monolito.application;
 
 import org.springframework.stereotype.Service;
 
-import es.codeurjc.daw.monolito.application.dto.ClienteTransaccion;
+import es.codeurjc.daw.common.ClienteTransaccion;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -14,8 +14,10 @@ public class NotificadorService {
 
     public void notificar(ClienteTransaccion transaccion) {
 
-        logger.trace("********* Envio de notificacion al cliente *********");
-        logger.trace(transaccion.toString());
-        logger.trace("*****************************************");
+        String mensaje = "\n********* Envio de notificacion al cliente *********" + 
+                         "\n" + transaccion.toString() +
+                         "\n*****************************************";
+                         
+        logger.trace(mensaje);
     }
 }
