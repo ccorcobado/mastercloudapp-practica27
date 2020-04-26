@@ -5,8 +5,8 @@
 	<groupId>es.codeurjc.daw</groupId>
 	<artifactId>api-gateway</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>demo</name>
-    <description>Demo project for Spring Boot</description>
+	<name>api-gateway</name>
+    <description>API Gateway</description>
     
     <parent>
 		<groupId>org.springframework.boot</groupId>

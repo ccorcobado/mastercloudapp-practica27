@@ -12,14 +12,19 @@ import es.codeurjc.daw.common.ProductoBase;
 import es.codeurjc.daw.common.ProductoTransaccion;
 import reactor.core.publisher.Mono;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+
 @Component
 public class WebClientMonolito {
-    
-    @Value( "${uri.monolito}" )
+
+    private static final Logger logger = LogManager.getLogger(WebClientMonolito.class);
+
+    @Value( "${monolito.uri}" )
     private String configuracion;
     
     private WebClient createWebClient() {
-        
+        logger.debug("Cliente creado con la siguiente configuracion, " + configuracion);
         return WebClient.create(configuracion);
     }
 
@@ -35,6 +40,7 @@ public class WebClientMonolito {
 
         WebClient webClient = this.createWebClient();
 
+        logger.debug("Llamada a, " + this.getUrlCliente(clienteId));
 		// Lectura de cliente
 		Mono<ClienteBase> monoClienteEncontrado = webClient.get()
 			.uri(this.getUrlCliente(clienteId))
@@ -63,7 +69,8 @@ public class WebClientMonolito {
     public ProductoBase leerProducto(String productoId) {
 
         WebClient webClient = this.createWebClient();
-
+        
+        logger.debug("Llamada a, " + this.getUrlProducto(productoId));
 		// Lectura de producto
 		Mono<ProductoBase> monoProductoEncontrado = webClient.get()
 			.uri(this.getUrlProducto(productoId))
@@ -84,6 +91,7 @@ public class WebClientMonolito {
         
         WebClient webClient = this.createWebClient();
 
+        logger.debug("Llamada a, " + this.getUrlCliente());
         // Transaccion de cliente
 		Mono<ClienteBase> monoClienteCreado = webClient
             .put()
@@ -106,7 +114,8 @@ public class WebClientMonolito {
     public ProductoBase realizarTransaccion(ProductoTransaccion productoTransaccion) {
         
         WebClient webClient = this.createWebClient();
-
+        
+        logger.debug("Llamada a, " + this.getUrlProducto());
         // Transaccion de producto
 		Mono<ProductoBase> monoProductoCreado = webClient
             .put()
