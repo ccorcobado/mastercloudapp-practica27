@@ -1,10 +1,8 @@
-package es.codeurjc.daw.monolito.application.saga;
+package es.codeurjc.daw.monolito.application;
 
 import java.math.BigDecimal;
 import java.util.Optional;
 
-import es.codeurjc.daw.monolito.application.ClienteCommandService;
-import es.codeurjc.daw.monolito.application.ProductoCommandService;
 import es.codeurjc.daw.monolito.application.dto.ClienteTransaccion;
 import es.codeurjc.daw.monolito.application.dto.ProductoTransaccion;
 import es.codeurjc.daw.monolito.application.dto.TipoTransaccion;
@@ -16,9 +14,9 @@ import es.codeurjc.daw.monolito.infrastructure.ProductoRepository;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
-public class PedidoSaga extends Thread {
+public class TransaccionPedidoCommandService extends Thread {
 
-    private static final Logger logger = LogManager.getLogger(PedidoSaga.class);
+    private static final Logger logger = LogManager.getLogger(TransaccionPedidoCommandService.class);
 
     public PedidoId pedidoId;
     public ClienteRepository clienteRepository;
@@ -119,7 +117,7 @@ public class PedidoSaga extends Thread {
 
         // PASO 4 - Transaccion realizar retiraza de stock
         logger.debug("PASO 4 - Transaccion realizar retiraza de stock");
-                        
+
         // 4.1 - Transaccion de retirada de unidades del stock
         logger.debug("4.1 - Transaccion de retirada de unidades del stock");
         ProductoTransaccion productoTransaccion = new ProductoTransaccion();

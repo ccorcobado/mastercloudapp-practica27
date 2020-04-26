@@ -14,7 +14,7 @@ public class NotificadorService {
 
     public void notificar(ClienteTransaccion transaccion) {
 
-        logger.trace("********* Envio de notificacion *********");
+        logger.trace("********* Envio de notificacion al cliente *********");
         logger.trace(transaccion.toString());
         logger.trace("*****************************************");
     }

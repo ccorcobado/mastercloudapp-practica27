@@ -9,7 +9,6 @@ import es.codeurjc.daw.monolito.application.dto.PedidoInput;
 import es.codeurjc.daw.monolito.domain.ClienteId;
 import es.codeurjc.daw.monolito.domain.Pedido;
 import es.codeurjc.daw.monolito.domain.PedidoEstado;
-import es.codeurjc.daw.monolito.application.saga.PedidoSaga;
 import es.codeurjc.daw.monolito.domain.ProductoId;
 import es.codeurjc.daw.monolito.infrastructure.ClienteRepository;
 import es.codeurjc.daw.monolito.infrastructure.PedidoRepository;
@@ -41,6 +40,7 @@ public class PedidoCommandService {
         if (entrada == null)
             throw new IllegalArgumentException("La entrada esta vacia");
 
+        // creamos pedido con estado en proceso
 		Pedido pedido = new Pedido();
 		pedido.setProductoId(new ProductoId(entrada.getProductoId()));
 		pedido.setClienteId(new ClienteId(entrada.getClienteId()));
@@ -49,14 +49,15 @@ public class PedidoCommandService {
 
         pedido = this.pedidoRepository.save(pedido);
 
-        PedidoSaga saga = new PedidoSaga();
-        saga.pedidoId = pedido.getId();
-        saga.clienteRepository = this.clienteRepository;
-        saga.pedidoRepository = this.pedidoRepository;
-        saga.productoRepository = this.productoRepository;
-        saga.clienteCommandService = clienteCommandService;
-        saga.productoCommandService = productoCommandService;
-        saga.start();
+        // Lanzamos el proceso del pedido en modo asincrono
+        TransaccionPedidoCommandService transaccionAsync = new TransaccionPedidoCommandService();
+        transaccionAsync.pedidoId = pedido.getId();
+        transaccionAsync.clienteRepository = this.clienteRepository;
+        transaccionAsync.pedidoRepository = this.pedidoRepository;
+        transaccionAsync.productoRepository = this.productoRepository;
+        transaccionAsync.clienteCommandService = clienteCommandService;
+        transaccionAsync.productoCommandService = productoCommandService;
+        transaccionAsync.start();
 
 		return convertEntityToDto(pedido);
     }
