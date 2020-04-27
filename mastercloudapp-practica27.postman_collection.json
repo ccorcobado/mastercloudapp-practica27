@@ -355,6 +355,72 @@
 				}
 			],
 			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Notificador",
+			"item": [
+				{
+					"name": "Notificar - Llamada interna",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"clienteId\": \"63636e32-ac83-487e-b856-3307db90f2ab\",\n\t\"transaccion\" : \"INGRESO\",\n\t\"credito\": 150.00\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8083/api/notificador",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"api",
+								"notificador"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Notificar - Llamada externa",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"clienteId\": \"63636e32-ac83-487e-b856-3307db90f2ab\",\n\t\"transaccion\" : \"INGRESO\",\n\t\"credito\": 150.00\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/notificador",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"notificador"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
 		}
 	],
 	"protocolProfileBehavior": {}
