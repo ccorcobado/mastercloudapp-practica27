@@ -20,6 +20,12 @@ public class ApiGatewayConfig {
 
     @Value( "${mspedido.port}" )
     private String mspedidoPort;
+    
+    @Value( "${msnotificador.uri}" )
+    private String msnotificadorUri;
+
+    @Value( "${msnotificador.port}" )
+    private String msnotificadorPort;
 
     @Bean
     public RouteLocator gatewayRoutes(RouteLocatorBuilder builder) {
@@ -36,6 +42,11 @@ public class ApiGatewayConfig {
                 .route(r -> r.path("/api/producto/**")
                         .uri(String.format("http://%s:%s/", monolitoUri, monolitoPort))
                         .id("productoModule"))
+
+                .route(r -> r.path("/api/notificador/**")
+                        .uri(String.format("http://%s:%s/", msnotificadorUri, msnotificadorPort))
+                        .id("productoModule"))
+
                 .build();
                 
     }
