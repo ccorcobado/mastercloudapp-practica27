@@ -7,7 +7,8 @@ import es.codeurjc.daw.common.ClienteTransaccion;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
-@Service
+@Deprecated
+@Service("notificadorInterno")
 public class NotificadorService implements INotificadorService {
 
     private static final Logger logger = LogManager.getLogger(NotificadorService.class);

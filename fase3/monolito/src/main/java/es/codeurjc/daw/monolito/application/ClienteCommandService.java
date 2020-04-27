@@ -2,6 +2,8 @@ package es.codeurjc.daw.monolito.application;
 
 import java.util.Optional;
 
+import javax.annotation.Resource;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,7 +22,9 @@ public class ClienteCommandService {
 	private ClienteRepository clienteRepository;
 
 	@Autowired
-	private NotificadorService notificadorService;
+	// @Resource(name="notificadorInterno")
+	@Resource(name="notificadorExterno")
+	private INotificadorService notificadorService;
 	
     @Autowired
     private ModelMapper modelMapperCommand;
