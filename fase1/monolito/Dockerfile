@@ -1,0 +1,42 @@
+# Instalamos maven
+FROM maven:3.3-jdk-8 as builder
+
+######## Libreria externa ########
+# Copiamos pom de la libreria externa al contenedor
+COPY ../common-libraries/common/pom.xml /code/common-libraries/common/
+
+# copiamos codigo libreria externa al contenedor
+COPY ../common-libraries/common/. /code/common-libraries/common/
+
+# nos posicionamos y lo compilamos
+WORKDIR /code/common-libraries/common/
+RUN mvn package -DskipTests=true -B
+
+# nos posicionamos y publicamos libreria externa en el maven del contenedor
+WORKDIR /code/common-libraries/common/target/
+RUN mvn install:install-file -Dfile=/code/common-libraries/common/target/common-1.0.jar -DgroupId=es.codeurjc.daw -DartifactId=common -Dversion=1.0 -Dpackaging=jar
+########
+
+######## Monolito ########
+# Copiamos pom.xml del monolito al contenedor
+COPY ./pom.xml /code/monolito/
+
+# nos posicionamos y descargamos dependencias del pom.xml
+WORKDIR /code/monolito/
+RUN mvn verify clean --fail-never  dependency:go-offline dependency:resolve-plugins
+
+# Copiamos el codigo al contenedor y lo compilamos
+COPY . /code/monolito/
+RUN mvn package -DskipTests=true -B
+########
+
+######## Ejecucion de la aplicacion principal - MONOLITO ########
+# Instalamos jdk8
+FROM openjdk:8-jre
+
+# copiamos el codigo compilado
+COPY --from=builder /code/monolito/target/*.jar /usr/app/
+WORKDIR /usr/app
+
+CMD ["java", "-jar", "monolito-0.0.1-SNAPSHOT.jar"]
+########
