@@ -66,7 +66,7 @@ Operaciones testeadas:
 * Creación de pedido - Unidades de stock insuficiente
 * Creación de pedido - Correcta
 
-## Fase 1 - Monolito
+## FASE 1 - Monolito
 En el monolito se definen 3 end points, cada uno de ellos con un caso de uso:
 * ClienteController
 * ProductoController
