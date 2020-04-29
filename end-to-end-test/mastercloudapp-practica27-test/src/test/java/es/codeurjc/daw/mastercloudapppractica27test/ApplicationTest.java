@@ -3,6 +3,7 @@ package es.codeurjc.daw.mastercloudapppractica27test;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -32,10 +33,16 @@ import java.math.BigDecimal;
 public class ApplicationTest {
 
 	private WebClient webClient;
+	
+    @Value( "${endpoint.ip}" )
+    private String ip;
+
+	@Value( "${endpoint.port}" )
+    private String port;
 
 	@BeforeEach
 	public void setUp() {
-		this.webClient = WebClient.create(FactoryTest.getUrl());
+		this.webClient = WebClient.create(FactoryTest.getUrl(ip, port));
 	}
 
 	private ClienteBase crearCliente(ClienteInput entrada) {

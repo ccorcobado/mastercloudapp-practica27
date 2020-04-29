@@ -8,10 +8,9 @@ import es.codeurjc.daw.common.ProductoInput;
 
 public class FactoryTest {
 
-    public static final int Port = 8080;
-
-    public static String getUrl() {
-        return String.format("http://localhost:%s", Port);
+    public static String getUrl(String url, String port) {
+        // return String.format("http://localhost:%s", Port);
+        return String.format("http://%s:%s", url, port);
     }
 
     public static String getUrlCliente() {
