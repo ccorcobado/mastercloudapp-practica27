@@ -74,7 +74,7 @@ En el monolito se definen 3 end points, cada uno de ellos con un caso de uso:
 
 Los dtos son usados de la librería común.
 
-El despliegue se realiza sobre el puerto 8080, el cuál será el endpoint principal para sucesivas fases
+El despliegue se realiza sobre el puerto `8080`, el cuál será el endpoint principal para sucesivas fases
 
 ## FASE 2 - Extracción de pedidos mediante el patrón strangler fig
 Se realiza la extracción de la funcionalidad implementada en la clase PedidoController a un microservicio
