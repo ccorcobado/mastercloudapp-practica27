@@ -22,8 +22,7 @@ public class ClienteCommandService {
 	private ClienteRepository clienteRepository;
 
 	@Autowired
-	// @Resource(name="notificadorInterno")
-	@Resource(name="notificadorExterno")
+	@Resource(name="${notificador.name}")
 	private INotificadorService notificadorService;
 	
     @Autowired

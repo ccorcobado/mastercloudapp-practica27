@@ -7,6 +7,8 @@ services:
       - "8081:8081"
     environment:
       notificador.uri: http://msnotificador:8083
+      notificador.name: notificadorExterno
+#      notificador.name: notificadorInterno
 
   mspedido:
     build: ./microservicio-pedido

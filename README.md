@@ -186,5 +186,34 @@ Ahora estamos preparados para realizar el cambio al nuevo servicio sin alterar e
 @Resource(name="notificadorExterno")
 private INotificadorService notificadorService;
     ...
-}
+```
+
+Para realizar el despliegue de forma parametrizada configuramos una variable a nivel de properties dentro del monolito
+```properties
+#notificador.name=notificadorInterno
+notificador.name=notificadorExterno
+```
+
+Cambiamos las referencias dentro del código al recurso para acceder al valor del properties
+
+```java
+// Fase 3
+@Autowired
+@Resource(name="${notificador.name}")
+private INotificadorService notificadorService;
+    ...
+```
+
+El último cambio se realiza en el docker-compose para configurarlo a nivel de despliegue
+
+```yaml
+  monolito:
+    build: ./monolito
+    ports:
+      - "8081:8081"
+    environment:
+      notificador.uri: http://msnotificador:8083
+      notificador.name: notificadorExterno
+#      notificador.name: notificadorInterno
+    ...
 ```
